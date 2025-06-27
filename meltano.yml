@@ -18,19 +18,16 @@ plugins:
     - about
     - stream-maps
     settings_group_validation:
-    - [auth_token, network_name, network_id]
+    - [auth_token, network_id]
     settings:
     - name: auth_token
       label: Auth Token
       description: The token to authenticate against the API service
       sensitive: true
-    - name: network_name
-      label: Network Name
-      description: Network name associated with the given network ID
     - name: network_id
       kind: integer
       label: Network ID
-      description: Network ID associated with the given network name
+      description: Unique network identifier
   loaders:
   - name: target-jsonl
     variant: andyh1203

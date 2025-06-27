@@ -23,18 +23,11 @@ class TapInvoca(Tap):
             description="The token to authenticate against the API service",
         ),
         th.Property(
-            "network_name",
-            th.StringType(nullable=False),
-            required=True,
-            title="Network Name",
-            description="Network name associated with the given network ID",
-        ),
-        th.Property(
             "network_id",
             th.IntegerType(nullable=False),
             required=True,
             title="Network ID",
-            description="Network ID associated with the given network name",
+            description="Unique network identifier",
         ),
     ).to_dict()
 

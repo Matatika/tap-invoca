@@ -12,10 +12,7 @@ from typing_extensions import override
 class InvocaStream(RESTStream):
     """Invoca stream class."""
 
-    @override
-    @cached_property
-    def url_base(self):
-        return f'https://{self.config["network_name"]}.invoca.net/api/2023-10-09'
+    url_base = "https://invoca.net/api/2023-10-09"
 
     @override
     @cached_property
