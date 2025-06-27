@@ -1,6 +1,6 @@
 version: 1
 send_anonymous_usage_stats: true
-project_id: "tap-invoca"
+project_id: tap-invoca
 default_environment: test
 venv:
   backend: uv
@@ -8,8 +8,8 @@ environments:
 - name: test
 plugins:
   extractors:
-  - name: "tap-invoca"
-    namespace: "tap_invoca"
+  - name: tap-invoca
+    namespace: tap_invoca
     pip_url: -e .
     capabilities:
     - state
@@ -17,32 +17,24 @@ plugins:
     - discover
     - about
     - stream-maps
-
-    # TODO: Declare settings and their types here:
+    settings_group_validation:
+    - [auth_token, network_name, network_id]
     settings:
-    - name: username
-      label: Username
-      description: The username to use for authentication
-
-    - name: password
-      kind: password
-      label: Password
-      description: The password to use for authentication
+    - name: auth_token
+      label: Auth Token
+      description: The token to authenticate against the API service
       sensitive: true
-
+    - name: network_name
+      label: Network Name
+      description: Network name associated with the given network ID
+    - name: network_id
+      kind: integer
+      label: Network ID
+      description: Network ID associated with the given network name
     - name: start_date
       kind: date_iso8601
       label: Start Date
       description: Initial date to start extracting data from
-
-    # TODO: Declare required settings here:
-    settings_group_validation:
-    - [username, password]
-
-    # TODO: Declare default configuration values here:
-    config:
-      start_date: '2010-01-01T00:00:00Z'
-
   loaders:
   - name: target-jsonl
     variant: andyh1203
