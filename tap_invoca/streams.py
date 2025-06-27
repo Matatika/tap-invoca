@@ -186,11 +186,12 @@ class NetworkTransactionStream(InvocaStream):
     def path(self):
         return f'/networks/transactions/{self.config["network_id"]}.json'
 
+    # https://developers.invoca.net/en/latest/api_documentation/transactions_api/network_user.html#query-parameters
     @override
     def get_url_params(self, context, next_page_token):
         params = super().get_url_params(context, next_page_token)
         params["limit"] = 4000
-        params["include_columns"] = ",".join(self.schema["properties"])
+        params["include_columns"] = "$invoca_default_columns,custom_data"
 
         if transaction_id := (
             next_page_token or self.get_starting_replication_key_value(context)
