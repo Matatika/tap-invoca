@@ -31,10 +31,6 @@ plugins:
       kind: integer
       label: Network ID
       description: Network ID associated with the given network name
-    - name: start_date
-      kind: date_iso8601
-      label: Start Date
-      description: Initial date to start extracting data from
   loaders:
   - name: target-jsonl
     variant: andyh1203

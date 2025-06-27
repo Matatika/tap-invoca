@@ -36,11 +36,6 @@ class TapInvoca(Tap):
             title="Network ID",
             description="Network ID associated with the given network name",
         ),
-        th.Property(
-            "start_date",
-            th.DateTimeType(nullable=True),
-            description="The earliest record date to sync",
-        ),
     ).to_dict()
 
     @override
