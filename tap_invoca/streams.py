@@ -19,7 +19,10 @@ class NetworkTransactionStream(InvocaStream):
     schema = th.PropertiesList(
         th.Property("transaction_id", th.StringType),
         th.Property("corrects_transaction_id", th.StringType),
-        th.Property("transaction_type", th.StringType),  # Call, Post Call Event
+        th.Property(
+            "transaction_type",
+            th.StringType,
+        ),  # Call, Post Call Event, Reported Conversion, Signal
         th.Property("original_order_id", th.StringType),
         th.Property("advertiser_id", th.StringType),
         th.Property("advertiser_id_from_network", th.StringType),
@@ -30,13 +33,22 @@ class NetworkTransactionStream(InvocaStream):
         th.Property("affiliate_id", th.StringType),
         th.Property("affiliate_id_from_network", th.StringType),
         th.Property("affiliate_name", th.StringType),
-        th.Property("affiliate_commissions_ranking", th.StringType),
-        th.Property("affiliate_call_volume_ranking", th.StringType),
-        th.Property("affiliate_conversion_rate_ranking", th.StringType),
+        th.Property(
+            "affiliate_commissions_ranking",
+            th.StringType,
+        ),  # 0, 1, 2, 3, 4, 5, new
+        th.Property(
+            "affiliate_call_volume_ranking",
+            th.StringType,
+        ),  # 0, 1, 2, 3, 4, 5, new
+        th.Property(
+            "affiliate_conversion_rate_ranking",
+            th.StringType,
+        ),  # 0, 1, 2, 3, 4, 5, new
         th.Property(
             "media_type",
             th.StringType,
-        ),  # Offline: Business Publication, Offline: Directory, Offline: Free Standing Insert (FSI), Offline: Outdoor, Offline: Radio, Offline: TV, Online: Content / Review Site, Online: Discount / Coupon Site, Online: Lead Form / Co Reg, Online: Other, Online: Search, Pooling  # noqa: E501
+        ),  # Offline: Business Publication, Offline: Directory, Offline: Free Standing Insert (FSI), Offline: Outdoor, Offline: Radio, Offline: TV, Online: Content / Review Site, Online: Discount / Coupon Site, Online: Email, Online: Lead Form / Co Reg, Online: Other, Online: Search, Online: Social Media, Pooling  # noqa: E501
         th.Property("call_source_description", th.StringType),
         th.Property("virtual_line_id", th.StringType),
         th.Property("call_result_description_detail", th.StringType),
@@ -123,8 +135,14 @@ class NetworkTransactionStream(InvocaStream):
         th.Property("dynamic_number_pool_referrer_param24_value", th.StringType),
         th.Property("dynamic_number_pool_referrer_param25_name", th.StringType),
         th.Property("dynamic_number_pool_referrer_param25_value", th.StringType),
-        th.Property("dynamic_number_pool_referrer_search_type", th.StringType),
-        th.Property("dynamic_number_pool_pool_type", th.StringType),  # Custom
+        th.Property(
+            "dynamic_number_pool_referrer_search_type",
+            th.StringType,
+        ),  # Organic, Paid
+        th.Property(
+            "dynamic_number_pool_pool_type",
+            th.StringType,
+        ),  # Custom, Search, SearchKeyword
         th.Property("dynamic_number_pool_id", th.IntegerType),
         th.Property("start_time_local", th.DateTimeType),
         th.Property("start_time_xml", th.DateTimeType),
@@ -144,7 +162,7 @@ class NetworkTransactionStream(InvocaStream):
         th.Property(
             "hangup_cause",
             th.StringType,
-        ),  # Caller: Hang-up, Destination: Hang-up, Destination: No Answer, Destination: Number Not In Service, IVF: Hang-up  # noqa: E501
+        ),  # Caller: Hang-up, Destination: Hang-up, Destination: Error (503 or Fast Busy), Destination: No Answer, Destination: Number Not In Service, Invoca: Max Call Duration, IVR: Hang-up, Unknown: Unknown Cause  # noqa: E501
         th.Property("signal_name", th.StringType),
         th.Property("signal_partner_unique_id", th.StringType),
         th.Property("signal_occurred_at", th.DateTimeType),
