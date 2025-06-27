@@ -126,13 +126,13 @@ class NetworkTransactionStream(InvocaStream):
         th.Property("dynamic_number_pool_referrer_search_type", th.StringType),
         th.Property("dynamic_number_pool_pool_type", th.StringType),  # Custom
         th.Property("dynamic_number_pool_id", th.IntegerType),
-        th.Property("start_time_local", th.StringType),
+        th.Property("start_time_local", th.DateTimeType),
         th.Property("start_time_xml", th.DateTimeType),
         th.Property("start_time_utc", th.IntegerType),
-        th.Property("start_time_network_timezone", th.StringType),
+        th.Property("start_time_network_timezone", th.DateTimeType),
         th.Property("start_time_network_timezone_xml", th.DateTimeType),
         th.Property("recording", th.URIType),
-        th.Property("corrected_at", th.StringType),
+        th.Property("corrected_at", th.DateTimeType),
         th.Property("opt_in_SMS", th.IntegerType),
         th.Property("complete_call_id", th.StringType),
         th.Property(
@@ -147,7 +147,7 @@ class NetworkTransactionStream(InvocaStream):
         ),  # Caller: Hang-up, Destination: Hang-up, Destination: No Answer, Destination: Number Not In Service, IVF: Hang-up  # noqa: E501
         th.Property("signal_name", th.StringType),
         th.Property("signal_partner_unique_id", th.StringType),
-        th.Property("signal_occurred_at", th.StringType),
+        th.Property("signal_occurred_at", th.DateTimeType),
         th.Property("signal_source", th.StringType),
         th.Property("revenue", th.StringType),
         th.Property("sale_amount", th.StringType),
