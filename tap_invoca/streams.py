@@ -202,7 +202,7 @@ class NetworkTransactionStream(InvocaStream):
     @override
     @cached_property
     def path(self):
-        return f'/networks/transactions/{self.config["network_id"]}.json'
+        return f"/networks/transactions/{self.config['network_id']}.json"
 
     # https://developers.invoca.net/en/latest/api_documentation/transactions_api/network_user.html#query-parameters
     @override
